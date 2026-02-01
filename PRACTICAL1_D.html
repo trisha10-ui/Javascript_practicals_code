@@ -1,0 +1,41 @@
+<!-- // Aim: Write the code on the following topics using JavaScript -->
+<!-- d.     Functions
+Write a function to reverse a given number. Use this function to check whether a number is a palindrome or not. -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Palindrome Number Check</title>
+</head>
+<body>
+    <h2>Palindrome Number Check</h2>
+
+    <script>
+        
+        // Function to reverse a number
+        function reverseNumber(num) {
+            let rev = 0;
+            while (num > 0) {
+                let digit = num % 10;
+                rev = rev * 10 + digit;
+                num = Math.floor(num / 10);
+            }
+            return rev;
+        }
+
+        // User input
+        let number = parseInt(prompt("Enter a number:"));
+        let reversed = reverseNumber(number);
+
+        // Output
+        document.write("Original Number: " + number + "<br>");
+        document.write("Reversed Number: " + reversed + "<br>");
+
+        // Palindrome check
+        if (number === reversed) {
+            document.write("Result: The number is a Palindrome");
+        } else {
+            document.write("Result: The number is NOT a Palindrome");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!-- e.Class and Object
+Create a class Car, constructor to initialize brand, model, year, price. Add a method to calculate depreciation (price reduces by 10% per year). Create and initialize an array of Car objects and show depreciation for each.
+Use alerts, prompts and confirm boxes wherever required. -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Car Depreciation</title>
+</head>
+<body>
+    <h2>Car Depreciation Calculation</h2>
+
+    <script>
+        // Car class
+        class Car {
+            constructor(brand, model, year, price) {
+                this.brand = brand;
+                this.model = model;
+                this.year = year;
+                this.price = price;
+            }
+
+            // Method to calculate depreciation
+            calculateDepreciation(currentYear) {
+                let age = currentYear - this.year;
+                let depreciatedPrice = this.price * Math.pow(0.9, age);
+                return depreciatedPrice.toFixed(2);
+            }
+        }
+
+        let cars = [];
+        let count = parseInt(prompt("Enter number of cars:"));
+
+        for (let i = 0; i < count; i++) {
+            alert("Enter details for Car " + (i + 1));
+
+            let brand = prompt("Enter car brand:");
+            let model = prompt("Enter car model:");
+            let year = parseInt(prompt("Enter manufacturing year:"));
+            let price = parseFloat(prompt("Enter car price:"));
+
+            cars.push(new Car(brand, model, year, price));
+        }
+
+        let currentYear = new Date().getFullYear();
+        let show = confirm("Do you want to see depreciation details?");
+
+        if (show) {
+            for (let i = 0; i < cars.length; i++) {
+                let depPrice = cars[i].calculateDepreciation(currentYear);
+
+                alert(
+                    "Car " + (i + 1) +
+                    "\nBrand: " + cars[i].brand +
+                    "\nModel: " + cars[i].model +
+                    "\nOriginal Price: ₹" + cars[i].price +
+                    "\nDepreciated Price: ₹" + depPrice
+                );
+            }
+        } else {
+            alert("Depreciation calculation cancelled.");
+        }
+    </script>
+</body>
+</html>
